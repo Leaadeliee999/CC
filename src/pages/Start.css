@@ -1,0 +1,170 @@
+html, body {
+  touch-action: none;
+  overscroll-behavior: none;
+  user-select: none;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.landing-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/assets/LandingPage.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Tombol play tetap di tengah dan responsif */
+.play-button {
+  position: fixed;
+  top: 27%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  animation: pulse 2s infinite;
+  transition: transform 0.2s ease-in-out;
+  z-index: 1000;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1.12);
+    opacity: 0.85;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Ukuran tombol responsif */
+.play-button img {
+  width: 20vw;     /* 20% dari lebar layar */
+  max-width: 430px; /* Batas maksimum */
+  min-width: 150px; /* Batas minimum */
+  height: auto;
+}
+
+/* Tombol Gambar Tanpa Background */
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+}
+
+.icon-image {
+  width: 60px;
+  height: 60px;
+}
+
+/* Wrapper untuk kanan atas */
+.top-right-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+/* Box transparan seperti di Figma */
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(121, 31, 93, 0.6); /* ungu transparan */
+  padding: 10px 16px;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Times New Roman', cursive;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.info-box:hover {
+  transform: scale(1.03);
+}
+
+/* Icon di dalam info-box */
+.icon-image {
+  width: 40px;
+  height: 40px;
+}
+
+/* Label text */
+.label-text {
+  font-weight: bold;
+}
+
+
+/* Leaderboard Popup */
+.leaderboard-popup {
+  position: absolute;
+  top: 170px;
+  right: 20px;
+  background-color: #fff;
+  border: 2px solid #c47aa3;
+  border-radius: 12px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  font-family: 'Times New Roman', serif;
+  color: #333;
+  z-index: 10;
+}
+
+.close-leaderboard {
+background-color: #fff;
+  border: 2px solid #c47aa3;
+  border-radius: 20px;
+  padding: 6px 12px;
+  top: 70px;
+  
+}
+
+.leaderboard-popup h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #c47aa3;
+  text-align: center;
+}
+
+.leaderboard-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.leaderboard-popup li {
+  margin: 6px 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Tambahan jika ingin bedakan admin box */
+.info-box.admin {
+  background-color: rgba(255, 99, 71, 0.6); /* contoh warna merah transparan */
+}

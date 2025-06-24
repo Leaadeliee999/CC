@@ -1,0 +1,9 @@
+.sound-toggle-button {
+  position: fixed;
+  bottom: 20px;
+  left: -13px;
+  width: 90px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 1000;
+}

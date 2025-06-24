@@ -1,0 +1,124 @@
+.admin-panel {
+  background: url("/assets/admin-bg.png") no-repeat center center/cover;
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Times New Roman', serif;
+  color: white;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.admin-panel h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.back-button img {
+  width: 40px;
+  height: 40px;
+}
+
+.admin-content {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.table-wrapper {
+  flex: 1;
+  min-width: 350px;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.table-wrapper h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.table-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  color: #ffdfef;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  color: #333;
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: #c47aa3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-group button:hover {
+  background-color: #a7598c;
+}

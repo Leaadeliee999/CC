@@ -1,0 +1,71 @@
+.level-page {
+  background-image: url('/assets/lv-bg.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 230px);
+  gap: 40px 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px; /* tadinya 100px, jadi 40px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.level-box {
+  position: relative;
+  cursor: pointer;
+  width: 230px;
+  height: 120px;
+  transition: transform 0.3s ease;
+}
+
+.level-box:hover {
+  transform: scale(1.05);
+}
+
+.level-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.level-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.level-title {
+  margin-top: 90px;
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-shadow: 3px 3px 6px #000;
+}
+
