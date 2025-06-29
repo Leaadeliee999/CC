@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase"; // Pastikan path sesuai
+import { auth, db } from "../firebase";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -16,18 +16,16 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // ✉️ Login pakai email dan password
   const handleEmailLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       alert("Login berhasil!");
-      navigate("/start"); // ✅ arahkan ke halaman start.jsx
+      navigate("/start");
     } catch (error) {
       alert("Gagal login: " + error.message);
     }
   };
 
-  // 🔵 Login pakai Google
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -44,7 +42,7 @@ function Login() {
       }
 
       alert(`Login Google berhasil! Selamat datang, ${user.displayName}`);
-      navigate("/start"); // ✅ arahkan ke halaman start.jsx
+      navigate("/start");
     } catch (error) {
       alert("Google Sign-in gagal: " + error.message);
     }
@@ -52,6 +50,14 @@ function Login() {
 
   return (
     <div className="login-page">
+      {/* 🔙 Tombol Back kiri atas */}
+      <img
+        src="/assets/back-icon.png"
+        alt="Back"
+        className="back-icon"
+        onClick={() => navigate("/")}
+      />
+
       <div className="login-container">
         <img src="/assets/SignIn-icon.png" alt="Sign In" className="signin-title" />
 
@@ -75,7 +81,11 @@ function Login() {
         </button>
 
         <button className="login-google" onClick={handleGoogleLogin}>
-          <img src="https://img.icons8.com/color/16/google-logo.png" alt="G" style={{ marginRight: "8px" }} />
+          <img
+            src="https://img.icons8.com/color/16/google-logo.png"
+            alt="G"
+            style={{ marginRight: "8px" }}
+          />
           Sign in with Google
         </button>
 

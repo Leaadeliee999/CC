@@ -13,7 +13,7 @@ function Start() {
     if (user) {
       setUsername(user.displayName || "Guest");
       if (user.email === "rara@gmail.com") {
-        setIsAdmin(true); // ✅ Cek apakah user adalah admin
+        setIsAdmin(true);
       }
     }
   }, []);
@@ -41,21 +41,21 @@ function Start() {
         <img src="/assets/playbutton.png" alt="Play" className="play-icon" />
       </button>
 
-      {/* Container Kanan Atas */}
+      {/* Logo di bawah tombol play */}
+      <img src="/assets/logo.png" alt="Canvas Conquest Logo" className="floating-logo" />
+
+      {/* Top Right Info Box */}
       <div className="top-right-wrapper">
-        {/* Profile Box */}
         <div className="info-box" onClick={handleProfileClick}>
           <img src="/assets/profile-icon.png" alt="Profile" className="icon-image" />
           <span className="label-text">{username}</span>
         </div>
 
-        {/* Leaderboard Box */}
         <div className="info-box" onClick={handleLeaderboardClick}>
           <img src="/assets/leaderboard-icon.png" alt="Leaderboard" className="icon-image" />
           <span className="label-text">Rank</span>
         </div>
 
-        {/* ✅ Admin Panel Box (hanya muncul jika isAdmin true) */}
         {isAdmin && (
           <div className="info-box" onClick={handleAdminClick}>
             <img src="/assets/admin.png" alt="Admin" className="icon-image" />

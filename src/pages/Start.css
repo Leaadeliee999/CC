@@ -15,7 +15,7 @@ html, body {
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-image: url('/assets/LandingPage.png');
+  background-image: url('/assets/landingpage.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -167,4 +167,27 @@ background-color: #fff;
 /* Tambahan jika ingin bedakan admin box */
 .info-box.admin {
   background-color: rgba(255, 99, 71, 0.6); /* contoh warna merah transparan */
+}
+
+.floating-logo {
+  position: fixed;
+  top: 52%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: auto;
+  animation: floatLogo 3s ease-in-out infinite;
+  z-index: 999;
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
 }

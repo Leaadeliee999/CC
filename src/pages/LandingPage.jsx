@@ -15,6 +15,9 @@ function LandingPage() {
       <button className="play-button" onClick={handlePlayClick}>
         <img src="/assets/playbutton.png" alt="Play" className="play-icon" />
       </button>
+
+      {/* Logo di bawah tombol */}
+      <img src="/assets/logo.png" alt="Canvas Conquest Logo" className="floating-logo" />
     </div>
   );
 }

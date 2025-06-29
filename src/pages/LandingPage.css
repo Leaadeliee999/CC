@@ -1,28 +1,26 @@
 html, body {
-  touch-action: none;
-  overscroll-behavior: none;
-  user-select: none;
-  overflow: hidden;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: black;
 }
 
-/* Landing Page Background Fullscreen */
+/* Background fullscreen */
 .landing-page {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
   width: 100vw;
-  background-image: url('/assets/LandingPage.png');
+  height: 100vh;
+  background-image: url('/assets/landingpage.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Tombol Play dengan posisi dan ukuran tetap */
+/* Tombol default (untuk resolusi HD) */
 .play-button {
   position: fixed;
   top: 27%;
@@ -33,11 +31,9 @@ html, body {
   cursor: pointer;
   padding: 0;
   animation: pulse 2s infinite;
-  transition: transform 0.2s ease-in-out;
   z-index: 1000;
 }
 
-/* Animasi pulse */
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -57,8 +53,126 @@ html, body {
   }
 }
 
-/* Ukuran gambar tombol fix, tidak responsif */
+/* Ukuran tombol default */
 .play-button img {
-  width: 200px;   /* ukuran tetap */
+  width: 200px;
   height: auto;
+}
+
+/* Responsive untuk tablet landscape */
+@media (max-width: 1366px) {
+  .play-button {
+    top: 60%;
+    left: 40%;
+  }
+
+  .play-button img {
+    width: 400px; /* Diperbesar dari 180px ke 220px */
+  }
+}
+
+/* Responsive untuk layar kecil seperti HP landscape */
+@media (max-width: 900px) {
+  .play-button {
+    top: 25%;
+    left: 40%;
+  }
+
+  .play-button img {
+    width: 130px;
+  }
+}
+
+/* Responsive untuk layar sangat kecil */
+@media (max-width: 600px) {
+  .play-button {
+    top: 25%;
+    left: 40%;
+  }
+
+  .play-button img {
+    width: 100px;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Background full screen */
+.landing-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/assets/LandingPage.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Tombol Play di tengah layar */
+.play-button {
+  position: fixed;
+  top: 42%; /* bisa kamu sesuaikan */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  z-index: 1000;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1.12);
+    opacity: 0.85;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.play-button img {
+  width: 180px;
+  height: auto;
+}
+
+/* Logo di bawah tombol Play */
+.floating-logo {
+  position: fixed;
+  top: 52%; /* atur sesuai kebutuhan */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px; /* sesuaikan ukurannya */
+  height: auto;
+  animation: floatLogo 3s ease-in-out infinite;
+  z-index: 999;
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
 }

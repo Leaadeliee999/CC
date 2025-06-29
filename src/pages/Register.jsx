@@ -28,11 +28,8 @@ function Register() {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(userCredential.user, {
-        displayName: username,
-      });
-
-      navigate("/start"); // ✅ arahkan ke halaman start.jsx
+      await updateProfile(userCredential.user, { displayName: username });
+      navigate("/start");
     } catch (error) {
       setRegisterError("Failed to register. Please try again.");
       console.error(error);
@@ -41,6 +38,14 @@ function Register() {
 
   return (
     <div className="login-page">
+      {/* 🔙 Tombol Back kiri atas */}
+      <img
+        src="/assets/back-icon.png"
+        alt="Back"
+        className="back-icon"
+        onClick={() => navigate("/")}
+      />
+
       <div className="login-container">
         <img src="/assets/SignUp-icon.png" alt="Sign Up" className="signin-title" />
 
@@ -52,7 +57,7 @@ function Register() {
           onChange={(e) => setUsername(e.target.value)}
         />
         {usernameError && (
-          <p style={{ color: "white", fontSize: "14px", marginTop: "-5px" }}>{usernameError}</p>
+          <p className="error-text">{usernameError}</p>
         )}
 
         <input
@@ -80,7 +85,7 @@ function Register() {
         </button>
 
         {registerError && (
-          <p style={{ color: "red", fontSize: "14px", marginTop: "10px" }}>{registerError}</p>
+          <p className="error-text">{registerError}</p>
         )}
 
         <div className="login-footer">
