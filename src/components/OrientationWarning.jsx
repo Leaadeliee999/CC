@@ -25,17 +25,17 @@ const OrientationWarning = () => {
       top: 0, left: 0,
       width: "100%",
       height: "100%",
-      backgroundColor: "#000000cc",
-      color: "white",
+      backgroundColor: "black",
       display: "flex",
-      alignItems: "center",
       justifyContent: "center",
-      zIndex: 9999,
-      fontSize: "24px",
-      textAlign: "center",
-      padding: "20px"
+      alignItems: "center",
+      zIndex: 9999
     }}>
-      Silakan putar perangkat Anda ke posisi <strong>landscape</strong> untuk memainkan game ini 😊
+      <img
+        src="/assets/rotate-phone.gif"
+        alt="Rotate phone"
+        style={{ width: "150px" }}
+      />
     </div>
   );
 };

@@ -25,6 +25,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 // ✅ Tambahkan ini
 import SoundToggle from "./SoundToggle";
+import OrientationWarning from "./components/OrientationWarning"; // ✅ Tambahan komponen warning
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,6 +41,9 @@ function App() {
   return (
     <Router>
       <div>
+        {/* ✅ Warning tampil di semua halaman */}
+        <OrientationWarning />
+
         <Routes>
           <Route path="/" element={<Navigate to="/landingpage" replace />} />
           <Route path="/landingpage" element={<LandingPage />} />
