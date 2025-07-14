@@ -6,27 +6,28 @@
   align-items: flex-start;
   padding: 60px 40px 40px;
   position: relative;
+  font-family: "Times New Roman", serif;
 }
 
-/* Hilangkan underline global */
 .leaderboard-container * {
   text-decoration: none !important;
+  font-family: "Times New Roman", serif !important;
 }
 
 .leaderboard-table {
   width: 90%;
-  max-width: 800px;
+  max-width: 800px; /* 🔧 GANTI DI SINI untuk atur lebar maksimum leaderboard */
   background: rgba(53, 39, 39, 0.27);
   backdrop-filter: blur(15px);
   border-radius: 30px;
-  padding: 30px;
+  padding: 30px; /* 🔧 GANTI DI SINI untuk atur padding dalam box */
   color: white;
   overflow: hidden;
 }
 
 h1 {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 2.4rem; /* 🔧 Judul leaderboard */
   font-weight: bold;
   margin-bottom: 25px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -47,13 +48,13 @@ tbody {
   display: flex;
   align-items: center;
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 15px 0;
+  padding: 12px 0;
 }
 
 .rank-number {
-  width: 50px;
+  width: 40px;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.3rem; /* 🔧 Ukuran angka peringkat */
   font-weight: bold;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -66,8 +67,8 @@ tbody {
 }
 
 .profile-img {
-  width: 60px;
-  height: 60px;
+  width: 48px;  /* 🔧 Ukuran avatar */
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   background: white;
@@ -77,45 +78,91 @@ tbody {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 60px;
-  margin-left: 15px; /* ✅ Geser nama ke kanan dari icon */
-  text-align: left;   /* ✅ Pastikan text rata kiri */
+  height: 48px;
+  margin-left: 10px;
+  text-align: left;
 }
 
 .player-name {
-  font-size: 1.2rem;
+  font-size: 1rem; /* 🔧 Ukuran nama player */
   font-weight: bold;
   color: white;
+  margin-bottom: 4px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  margin-bottom: 6px;
 }
 
 .player-stats {
   display: flex;
   justify-content: space-between;
-  text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem; /* 🔧 Ukuran skor & waktu */
   color: #eee;
   width: 100%;
-  gap: 170px;
+  gap: 110px; /* 🔧 JARAK antara skor & waktu */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .player-stats .label {
   display: block;
   font-weight: 600;
+  font-size: 0.75rem;
   color: #ddd;
-  font-size: 0.85rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .back-button {
   position: absolute;
   top: 30px;
   left: 30px;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   z-index: 10;
 }
 
+/* 📱 HANDPHONE LANDSCAPE */
+@media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
+  .leaderboard-table {
+    padding: 10px;
+    max-width: 65vw;
+    max-height: 75vh; /* ⬅️ BATASI TINGGI leaderboard */
+    overflow-y: auto; /* ⬅️ Biar bisa di-scroll */
+  }
+
+  tbody {
+    max-height: 50vh; /* ⬅️ BATASI tinggi daftar nama supaya scrollable */
+    overflow-y: auto;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  .rank-number {
+    font-size: 1rem;
+    width: 36px;
+  }
+
+  .profile-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .player-name {
+    font-size: 0.9rem;
+  }
+
+  .player-stats {
+    font-size: 0.75rem;
+    gap: 60px;
+  }
+
+  .player-stats .label {
+    font-size: 0.65rem;
+  }
+
+  .back-button {
+    width: 28px;
+    height: 28px;
+    top: 20px;
+    left: 20px;
+  }
+}

@@ -1,0 +1,222 @@
+.admin-panel {
+  background: url("/assets/admin-bg.png") no-repeat center center/cover;
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Times New Roman', serif;
+  color: white;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.back-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  z-index: 999;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-icon:hover {
+  transform: scale(1.1);
+}
+
+.admin-content {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.table-wrapper {
+  flex: 1;
+  min-width: 350px;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.table-wrapper h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.table-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  color: #ffdfef;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  color: #333;
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: #c47aa3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-group button:hover {
+  background-color: #a7598c;
+}
+
+.icon-trash {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon-trash:hover {
+  transform: scale(1.2);
+  color: #ffcccc;
+}
+
+.refresh-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.refresh-button {
+  background-color: #c47aa3;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Times New Roman", serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.refresh-button:hover {
+  background-color: #a7598c;
+}
+
+/* 📱 HANDPHONE LANDSCAPE */
+@media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
+
+  /* 🟪 Ukuran panel utama lebih ramping */
+  .admin-panel {
+    padding: 20px;
+  }
+
+  /* 🟪 Ukuran tombol back diperkecil */
+  .back-icon {
+    width: 28px;
+    height: 28px;
+    top: 16px;
+    left: 16px;
+  }
+
+  /* 🟪 Tampilan layout jadi vertikal penuh */
+  .admin-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  /* 🟪 Tabel user diperkecil */
+  .table-wrapper {
+    width: 90%;
+    padding: 16px;
+  }
+
+  .table-wrapper h2 {
+    font-size: 1.1rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  .actions button {
+    font-size: 1rem;
+  }
+
+  /* 🟪 Form input lebih kecil dan penuh lebar */
+  .form-group {
+    width: 90%;
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .form-group input,
+  .form-group button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .refresh-button {
+    font-size: 0.85rem;
+    padding: 6px 16px;
+  }
+
+  .icon-trash {
+    font-size: 18px;
+  }
+}

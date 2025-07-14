@@ -17,7 +17,7 @@ function SoundToggle() {
     if (!audio) return;
 
     if (isSoundOn) {
-      audio.volume = 0.3; // Bisa disesuaikan
+      audio.volume = 0.3;
       audio.loop = true;
       audio.play().catch((e) => console.log("Autoplay prevented:", e));
     } else {
@@ -34,9 +34,15 @@ function SoundToggle() {
   return (
     <>
       <img
-        src={isSoundOn ? "/assets/sound-on.png" : "/assets/sound-off.png"}
-        alt="Sound Toggle"
-        className="sound-toggle-button"
+        src="/assets/sound-on.png"
+        alt="Sound On"
+        className={`sound-on-icon ${isSoundOn ? "visible" : "hidden"}`}
+        onClick={toggleSound}
+      />
+      <img
+        src="/assets/sound-off.png"
+        alt="Sound Off"
+        className={`sound-off-icon ${!isSoundOn ? "visible" : "hidden"}`}
         onClick={toggleSound}
       />
       <audio ref={audioRef} src="/assets/Fairy-Tale.mp3" />

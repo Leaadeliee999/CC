@@ -4,9 +4,10 @@ import { auth, db } from "../firebase";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider
+  GoogleAuthProvider,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import "./Login.css";
 
 const provider = new GoogleAuthProvider();
@@ -15,6 +16,7 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleEmailLogin = async () => {
     try {
@@ -37,7 +39,7 @@ function Login() {
         await setDoc(userRef, {
           email: user.email,
           name: user.displayName,
-          createdAt: new Date()
+          createdAt: new Date(),
         });
       }
 
@@ -50,7 +52,6 @@ function Login() {
 
   return (
     <div className="login-page">
-      {/* 🔙 Tombol Back kiri atas */}
       <img
         src="/assets/back-icon.png"
         alt="Back"
@@ -68,13 +69,23 @@ function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="PASSWORD"
-          className="login-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+
+        <div className="password-wrapper">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="PASSWORD"
+            className="login-input"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            type="button"
+            className="toggle-password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <VscEyeClosed size={22} /> : <VscEye size={22} />}
+          </button>
+        </div>
 
         <button className="login-submit" onClick={handleEmailLogin}>
           SUBMIT

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import "./Login.css";
 
 function Register() {
@@ -9,6 +10,7 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [usernameError, setUsernameError] = useState("");
   const [registerError, setRegisterError] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
@@ -38,7 +40,6 @@ function Register() {
 
   return (
     <div className="login-page">
-      {/* 🔙 Tombol Back kiri atas */}
       <img
         src="/assets/back-icon.png"
         alt="Back"
@@ -68,13 +69,22 @@ function Register() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <input
-          type="password"
-          placeholder="PASSWORD"
-          className="login-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="password-wrapper">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="PASSWORD"
+            className="login-input"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            type="button"
+            className="toggle-password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <VscEyeClosed size={22} /> : <VscEye size={22} />}
+          </button>
+        </div>
 
         <button
           className="login-submit"

@@ -1,0 +1,161 @@
+.gameplay1 {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Times New Roman', sans-serif;
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 12px 24px;
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.puzzle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.correct-count {
+  margin-top: 10px;
+  color: white;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 6px 16px;
+  border-radius: 10px;
+}
+
+.setting-button {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 65px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.preview-container {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.preview-button {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.preview-count {
+  font-size: 14px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.swal2-popup.small-popup {
+  width: 320px !important;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.swal2-confirm.small-button,
+.swal2-cancel.small-button {
+  font-size: 0.85rem !important;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+}
+
+/* 📱 HANDPHONE LANDSCAPE */
+@media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
+
+  /* 🧱 Container utama game */
+  .gameplay1 {
+    font-family: 'Times New Roman', serif;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+
+  /* ⏱ Timer di atas tengah */
+  .timer {
+    font-size: 14px;
+    padding: 6px 12px;
+    top: 16px;
+  }
+
+  /* 🧩 Puzzle board: dikecilin & dibatasi biar gak melebar */
+  .puzzle-container {
+    margin-top: 40px;
+    transform: scale(0.1);              /* ⬅️ Dikecilkan lagi */
+    max-width: 70vw;                    /* ⬅️ Lebar maksimum */
+    touch-action: none;                 /* ⬅️ Perbaiki agar drag & drop bisa di HP */
+  }
+
+  /* ✅ Counter jawaban benar */
+  .correct-count {
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-top: 10px;
+  }
+
+  /* ⚙️ Tombol setting */
+  .setting-button {
+    width: 50px;
+    height: 27px;
+    top: 16px;
+    left: 12px;
+  }
+
+  /* 🔍 Tombol preview + jumlah preview */
+  .preview-container {
+    top: 16px;
+    right: 12px;
+    gap: 4px;
+  }
+
+  .preview-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .preview-count {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  /* 🖼️ Popup gambar preview */
+  .swal2-popup.preview-popup {
+    width: 70px !important;             /* ⬅️ Lebar popup preview dikecilin */
+    padding: 4px !important;
+  }
+
+  /* ✅ Tombol swal2 */
+  .swal2-confirm.small-button,
+  .swal2-cancel.small-button {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    width: 80px !important;
+    box-sizing: border-box;
+  }
+}

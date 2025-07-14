@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-import { updateProfile, deleteUser } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import "./Profile.css";
 
@@ -59,15 +59,14 @@ function Profile() {
     });
   };
 
-  const handleDeleteAccount = async () => {
+  const handleLogout = async () => {
     const result = await Swal.fire({
-      title: 'Are you sure?',
-      text: "This action will delete your account permanently!",
-      icon: 'warning',
+      title: 'Are you sure you want to log out?',
+      icon: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#d33',
+      confirmButtonColor: '#3085d6',
       cancelButtonColor: '#aaa',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, log out',
       customClass: {
         popup: 'swal-popup',
         confirmButton: 'swal-confirm',
@@ -77,18 +76,17 @@ function Profile() {
 
     if (result.isConfirmed) {
       try {
-        await deleteUser(user);
-        await Swal.fire('Deleted!', 'Your account has been deleted.', 'success');
-        navigate("/register");
+        await auth.signOut();
+        await Swal.fire('Logged out!', 'You have been logged out.', 'success');
+        navigate("/login");
       } catch (error) {
-        Swal.fire('Error', 'Delete failed: ' + error.message, 'error');
+        Swal.fire('Error', 'Logout failed: ' + error.message, 'error');
       }
     }
   };
 
   return (
     <div className="profile-page">
-      {/* Tombol Back */}
       <img
         src="/assets/back-icon.png"
         alt="Back"
@@ -114,7 +112,7 @@ function Profile() {
           SAVE CHANGE
         </button>
 
-        <button className="logout" onClick={handleDeleteAccount}>
+        <button className="logout" onClick={handleLogout}>
           LOG OUT
         </button>
       </div>

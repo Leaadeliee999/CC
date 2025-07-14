@@ -191,3 +191,87 @@ background-color: #fff;
     transform: translateX(-50%) translateY(0);
   }
 }
+
+/* 📱 HANDPHONE LANDSCAPE */
+@media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
+  .play-button {
+    top: 20%;
+    left: 39%;
+  }
+
+  .play-button img {
+    width: 22vw;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .floating-logo {
+    top: 50%;
+    width: 380px;
+  }
+
+  .info-box {
+    font-size: 16px;
+    padding: 2px 6px;
+    gap: 8px;
+  }
+
+  .icon-image {
+    width: 32px;
+    height: 32px;
+  }
+
+  .leaderboard-popup {
+    width: 220px;
+    padding: 14px;
+    top: 160px;
+  }
+}
+
+/* 💻 TABLET LANDSCAPE */
+@media (min-width: 1024px) and (max-width: 1280px) and (orientation: landscape) {
+  .play-button {
+    top: 30%;
+    left: 39%;
+  }
+
+  .play-button img {
+    width: 27vw;
+    min-width: 150px;
+    max-width: 280px;
+  }
+
+  .floating-logo {
+    top: 54%;
+    width: 600px;
+  }
+
+  .info-box {
+    font-size: 18px;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .icon-image {
+    width: 36px;
+    height: 36px;
+  }
+
+  .leaderboard-popup {
+    width: 230px;
+    padding: 16px;
+    top: 165px;
+  }
+
+  .leaderboard-popup h2 {
+    font-size: 17px;
+  }
+
+  .leaderboard-popup li {
+    font-size: 15px;
+  }
+
+  .close-leaderboard {
+    padding: 6px 12px;
+  }
+}

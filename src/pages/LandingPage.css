@@ -5,6 +5,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   background: black;
+  font-family: sans-serif;
 }
 
 /* Background fullscreen */
@@ -14,102 +15,6 @@ html, body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('/landingpage.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Tombol default (untuk resolusi HD) */
-.play-button {
-  position: fixed;
-  top: 27%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  animation: pulse 2s infinite;
-  z-index: 1000;
-}
-
-@keyframes pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  40% {
-    transform: translate(-50%, -50%) scale(1.12);
-    opacity: 0.85;
-  }
-  60% {
-    transform: translate(-50%, -50%) scale(1.06);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
-
-/* Ukuran tombol default */
-.play-button img {
-  width: 200px;
-  height: auto;
-}
-
-/* Responsive untuk tablet landscape */
-@media (max-width: 1366px) {
-  .play-button {
-    top: 60%;
-    left: 40%;
-  }
-
-  .play-button img {
-    width: 400px; /* Diperbesar dari 180px ke 220px */
-  }
-}
-
-/* Responsive untuk layar kecil seperti HP landscape */
-@media (max-width: 900px) {
-  .play-button {
-    top: 25%;
-    left: 40%;
-  }
-
-  .play-button img {
-    width: 130px;
-  }
-}
-
-/* Responsive untuk layar sangat kecil */
-@media (max-width: 600px) {
-  .play-button {
-    top: 25%;
-    left: 40%;
-  }
-
-  .play-button img {
-    width: 100px;
-  }
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
-
-/* Background full screen */
-.landing-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
   background-image: url('/assets/landingpage.png');
   background-size: cover;
   background-position: center;
@@ -119,7 +24,7 @@ html, body {
 /* Tombol Play di tengah layar */
 .play-button {
   position: fixed;
-  top: 42%; /* bisa kamu sesuaikan */
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: transparent;
@@ -156,10 +61,10 @@ html, body {
 /* Logo di bawah tombol Play */
 .floating-logo {
   position: fixed;
-  top: 52%; /* atur sesuai kebutuhan */
+  top: 52%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px; /* sesuaikan ukurannya */
+  width: 300px;
   height: auto;
   animation: floatLogo 3s ease-in-out infinite;
   z-index: 999;
@@ -176,3 +81,5 @@ html, body {
     transform: translateX(-50%) translateY(0);
   }
 }
+
+

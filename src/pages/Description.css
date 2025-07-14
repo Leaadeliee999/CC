@@ -1,0 +1,56 @@
+.description-page {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.start-button {
+  position: absolute;
+  bottom: 80px;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+  transition: transform 0.3s ease;
+}
+
+/* 📱 HANDPHONE LANDSCAPE */
+@media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
+  .description-page {
+    font-family: 'Times New Roman', serif;
+  }
+
+  .back-button {
+    width: 28px;
+    height: 28px;
+    top: 16px;
+    left: 16px;
+  }
+
+  .start-button {
+    bottom: 50px;
+    left: 30%;
+    width: 100px;
+    transform: translateX(-50%);
+  }
+}

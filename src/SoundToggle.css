@@ -1,9 +1,32 @@
-.sound-toggle-button {
+/* Gaya umum untuk kedua icon */
+.sound-on-icon,
+.sound-off-icon {
   position: fixed;
-  bottom: 20px;
-  left: -13px;
-  width: 90px;
-  height: 60px;
+  bottom: 10px;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   cursor: pointer;
   z-index: 1000;
+}
+
+/* Kontrol visibilitas */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+/* 📱 HANDPHONE LANDSCAPE */
+@media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
+  .sound-on-icon,
+  .sound-off-icon {
+    width: 65px;
+    height: 65px;
+    bottom: 8px;
+    left: 8px;
+  }
 }

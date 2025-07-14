@@ -1,39 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import "./Level.css";
 
 function Level() {
+  const [levels, setLevels] = useState([]);
   const navigate = useNavigate();
 
-  const handleLevelClick = (level) => {
-    navigate(`/level${level}`); // akan diarahkan ke halaman sesuai level
-  };
+  useEffect(() => {
+    const fetchLevels = async () => {
+      const querySnapshot = await getDocs(collection(db, "levels"));
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      const sorted = data.sort((a, b) => a.level - b.level);
+      setLevels(sorted);
+    };
+
+    fetchLevels();
+  }, []);
 
   return (
     <div className="level-page">
-      {/* Tombol Back */}
       <img
         src="/assets/back-icon.png"
         alt="Back"
-        className="back-button"
+        className="back-icon"
         onClick={() => navigate("/start")}
       />
+      <h1 className="level-title">Level</h1>
 
-      {/* Judul */}
-      <h1 className="level-title">LEVEL</h1>
-
-      {/* Kontainer Level */}
       <div className="level-grid">
-        {[1, 2, 3, 4, 5, 6].map((level) => (
-          <div
-            key={level}
-            className={`level-box level-${level}`}
-            onClick={() => handleLevelClick(level)}
-          >
-            <img src="/assets/level-bg.png" alt={`Level ${level}`} />
-            <span className="level-number">{level}</span>
-          </div>
-        ))}
+        {levels.length === 0 ? (
+          <p className="no-level-text">Belum ada level tersedia.</p>
+        ) : (
+          levels.map((lvl) => (
+            <div
+              key={lvl.id}
+              className="level-box"
+              onClick={() => navigate(`/description/${lvl.id}`)}
+            >
+              <img
+                src="/assets/level-bg.png"
+                alt="Level Frame"
+                className="level-frame"
+              />
+              <span className="level-number">{lvl.level}</span>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
