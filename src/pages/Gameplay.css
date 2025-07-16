@@ -86,39 +86,45 @@
   border-radius: 8px !important;
 }
 
+/* 🎯 Puzzle Piece Styling */
+.puzzle-piece {
+  transition: outline 0.2s ease, transform 0.2s ease;
+}
+
+.puzzle-piece.selected {
+  outline: 3px solid #ff7bcb;
+  transform: scale(1.05);
+  z-index: 2;
+}
+
 /* 📱 HANDPHONE LANDSCAPE */
 @media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
 
-  /* 🧱 Container utama game */
   .gameplay1 {
     font-family: 'Times New Roman', serif;
     padding: 3px;
     box-sizing: border-box;
   }
 
-  /* ⏱ Timer di atas tengah */
   .timer {
     font-size: 14px;
     padding: 6px 12px;
     top: 16px;
   }
 
-  /* 🧩 Puzzle board: dikecilin & dibatasi biar gak melebar */
   .puzzle-container {
     margin-top: 40px;
-    transform: scale(0.1);              /* ⬅️ Dikecilkan lagi */
-    max-width: 70vw;                    /* ⬅️ Lebar maksimum */
-    touch-action: none;                 /* ⬅️ Perbaiki agar drag & drop bisa di HP */
+    transform: scale(0.1);
+    max-width: 70vw;
+    touch-action: none;
   }
 
-  /* ✅ Counter jawaban benar */
   .correct-count {
     font-size: 12px;
     padding: 4px 8px;
     margin-top: 10px;
   }
 
-  /* ⚙️ Tombol setting */
   .setting-button {
     width: 50px;
     height: 27px;
@@ -126,7 +132,6 @@
     left: 12px;
   }
 
-  /* 🔍 Tombol preview + jumlah preview */
   .preview-container {
     top: 16px;
     right: 12px;
@@ -143,13 +148,11 @@
     padding: 2px 6px;
   }
 
-  /* 🖼️ Popup gambar preview */
   .swal2-popup.preview-popup {
-    width: 70px !important;             /* ⬅️ Lebar popup preview dikecilin */
+    width: 70px !important;
     padding: 4px !important;
   }
 
-  /* ✅ Tombol swal2 */
   .swal2-confirm.small-button,
   .swal2-cancel.small-button {
     font-size: 0.7rem !important;

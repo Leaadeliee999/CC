@@ -16,7 +16,7 @@ function Gameplay() {
   const { id } = useParams();
   const [imageSrc, setImageSrc] = useState("");
   const [pieces, setPieces] = useState([]);
-  const [draggedIndex, setDraggedIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [timer, setTimer] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [previewCount, setPreviewCount] = useState(0);
@@ -60,43 +60,46 @@ function Gameplay() {
     }
   };
 
-  const handleDragStart = (index) => setDraggedIndex(index);
+  const handlePieceClick = (index) => {
+    if (selectedIndex === null) {
+      setSelectedIndex(index);
+    } else if (selectedIndex === index) {
+      setSelectedIndex(null);
+    } else {
+      const newPieces = [...pieces];
+      [newPieces[selectedIndex], newPieces[index]] = [newPieces[index], newPieces[selectedIndex]];
+      setPieces(newPieces);
+      setSelectedIndex(null);
+      const correctNow = countCorrectPieces(newPieces);
+      setCorrectCount(correctNow);
 
-  const handleDrop = (index) => {
-    const newPieces = [...pieces];
-    [newPieces[index], newPieces[draggedIndex]] = [newPieces[draggedIndex], newPieces[index]];
-    setPieces(newPieces);
-    setDraggedIndex(null);
-    const correctNow = countCorrectPieces(newPieces);
-    setCorrectCount(correctNow);
+      if (isSolved(newPieces)) {
+        clearInterval(timerRef.current);
+        saveScoreToFirebase(timer);
+        const currentIndex = levelList.findIndex((lvl) => lvl.id === id);
+        const nextLevel = levelList[currentIndex + 1];
 
-    if (isSolved(newPieces)) {
-      clearInterval(timerRef.current);
-      saveScoreToFirebase(timer);
-
-      const currentIndex = levelList.findIndex((lvl) => lvl.id === id);
-      const nextLevel = levelList[currentIndex + 1];
-
-      MySwal.fire({
-        title: "Bravo!",
-        html: `<strong>Waktu Selesai:</strong> ${formatTime(timer)}`,
-        showCancelButton: !!nextLevel,
-        confirmButtonText: "Kembali ke Beranda",
-        cancelButtonText: nextLevel ? "Pilih Level Berikutnya" : undefined,
-        customClass: {
-          popup: 'small-popup',
-          confirmButton: 'small-button',
-          cancelButton: 'small-button'
-        },
-        background: 'rgba(255,255,255,0.95)',
-        color: '#333',
-      }).then((res) => {
-        if (res.dismiss === Swal.DismissReason.cancel && nextLevel) {
-          navigate("/level"); // ⬅️ arahkan ke halaman pilih level
-        } else {
-          navigate("/start");
-        }
-      });
+        MySwal.fire({
+          title: "Bravo!",
+          html: `<strong>Waktu Selesai:</strong> ${formatTime(timer)}`,
+          showCancelButton: !!nextLevel,
+          confirmButtonText: "Kembali ke Beranda",
+          cancelButtonText: nextLevel ? "Pilih Level Berikutnya" : undefined,
+          customClass: {
+            popup: "small-popup",
+            confirmButton: "small-button",
+            cancelButton: "small-button",
+          },
+          background: "rgba(255,255,255,0.95)",
+          color: "#333",
+        }).then((res) => {
+          if (res.dismiss === Swal.DismissReason.cancel && nextLevel) {
+            navigate("/level");
+          } else {
+            navigate("/start");
+          }
+        });
+      }
     }
   };
 
@@ -127,18 +130,18 @@ function Gameplay() {
         title: "Oops!",
         text: "Preview hanya bisa dilakukan 3x.",
         icon: "warning",
-        customClass: { popup: 'small-popup', confirmButton: 'small-button' },
+        customClass: { popup: "small-popup", confirmButton: "small-button" },
       });
       return;
     }
 
-    setPreviewCount(prev => prev + 1);
+    setPreviewCount((prev) => prev + 1);
     MySwal.fire({
       title: `Preview (${previewCount + 1}/${MAX_PREVIEW})`,
       imageUrl: imageSrc,
       imageWidth: 300,
       imageAlt: "Preview Image",
-      customClass: { popup: 'small-popup', confirmButton: 'small-button' },
+      customClass: { popup: "small-popup", confirmButton: "small-button" },
     });
   };
 
@@ -149,12 +152,12 @@ function Gameplay() {
       confirmButtonText: "Kembali ke Beranda",
       cancelButtonText: "Lanjutkan",
       customClass: {
-        popup: 'small-popup',
-        confirmButton: 'small-button',
-        cancelButton: 'small-button'
+        popup: "small-popup",
+        confirmButton: "small-button",
+        cancelButton: "small-button",
       },
-      background: 'rgba(255,255,255,0.95)',
-      color: '#333',
+      background: "rgba(255,255,255,0.95)",
+      color: "#333",
     }).then((res) => {
       if (res.isConfirmed) {
         navigate("/start");
@@ -198,11 +201,8 @@ function Gameplay() {
         {pieces.map((pieceIndex, i) => (
           <div
             key={i}
-            className="puzzle-piece"
-            draggable
-            onDragStart={() => handleDragStart(i)}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={() => handleDrop(i)}
+            className={`puzzle-piece ${selectedIndex === i ? "selected" : ""}`}
+            onClick={() => handlePieceClick(i)}
             style={{
               width: PIECE_SIZE,
               height: PIECE_SIZE,
@@ -211,7 +211,7 @@ function Gameplay() {
               backgroundSize: `${BOARD_SIZE}px ${BOARD_SIZE}px`,
               border: "1px solid #fff",
               boxSizing: "border-box",
-              cursor: "grab",
+              cursor: "pointer",
             }}
           ></div>
         ))}
