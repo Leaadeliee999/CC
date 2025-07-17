@@ -98,7 +98,7 @@
   z-index: 2;
 }
 
-/* ✅ Tambahan: Responsive Styling untuk di HP */
+/* ✅ Tambahan: Responsive Styling untuk HP */
 @media (max-width: 768px) {
   .timer {
     font-size: 18px;
