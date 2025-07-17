@@ -1,3 +1,4 @@
+/* ✅ Style Asli (tetap dipertahankan, tidak diubah) */
 .gameplay1 {
   height: 100vh;
   background-size: cover;
@@ -97,68 +98,60 @@
   z-index: 2;
 }
 
-/* 📱 HANDPHONE LANDSCAPE */
-@media (min-width: 667px) and (max-width: 932px) and (orientation: landscape) {
-
-  .gameplay1 {
-    font-family: 'Times New Roman', serif;
-    padding: 3px;
-    box-sizing: border-box;
-  }
-
+/* ✅ Tambahan: Responsive Styling untuk HP */
+@media (max-width: 768px) {
   .timer {
-    font-size: 14px;
-    padding: 6px 12px;
-    top: 16px;
-  }
-
-  .puzzle-container {
-    margin-top: 40px;
-    transform: scale(0.1);
-    max-width: 70vw;
-    touch-action: none;
-  }
-
-  .correct-count {
-    font-size: 12px;
-    padding: 4px 8px;
-    margin-top: 10px;
+    font-size: 18px;
+    padding: 8px 16px;
+    top: 20px;
   }
 
   .setting-button {
     width: 50px;
-    height: 27px;
-    top: 16px;
-    left: 12px;
+    top: 20px;
+    left: 10px;
   }
 
   .preview-container {
-    top: 16px;
-    right: 12px;
+    top: 20px;
+    right: 10px;
     gap: 4px;
   }
 
   .preview-button {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 
   .preview-count {
-    font-size: 10px;
-    padding: 2px 6px;
+    font-size: 12px;
+    padding: 3px 8px;
   }
 
-  .swal2-popup.preview-popup {
-    width: 70px !important;
-    padding: 4px !important;
+  .correct-count {
+    font-size: 14px;
+    padding: 4px 10px;
+  }
+
+  .puzzle-container {
+    margin-top: 80px;
+    transform: scale(0.85);
+  }
+
+  .swal2-popup.small-popup {
+    width: 90% !important;
+    padding: 16px;
   }
 
   .swal2-confirm.small-button,
   .swal2-cancel.small-button {
-    font-size: 0.7rem !important;
-    padding: 4px 8px !important;
-    border-radius: 6px !important;
-    width: 80px !important;
-    box-sizing: border-box;
+    font-size: 0.75rem !important;
+    padding: 5px 10px !important;
   }
+}
+
+.puzzle-piece.selected {
+  outline: 3px solid #ff7bcb;
+  transform: scale(1.05);
+  z-index: 2;
 }

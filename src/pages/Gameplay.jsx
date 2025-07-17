@@ -63,11 +63,9 @@ function Gameplay() {
   const handlePieceClick = (index) => {
     if (selectedIndex === null) {
       setSelectedIndex(index);
-    } else if (selectedIndex === index) {
-      setSelectedIndex(null);
     } else {
       const newPieces = [...pieces];
-      [newPieces[selectedIndex], newPieces[index]] = [newPieces[index], newPieces[selectedIndex]];
+      [newPieces[index], newPieces[selectedIndex]] = [newPieces[selectedIndex], newPieces[index]];
       setPieces(newPieces);
       setSelectedIndex(null);
       const correctNow = countCorrectPieces(newPieces);
@@ -86,12 +84,12 @@ function Gameplay() {
           confirmButtonText: "Kembali ke Beranda",
           cancelButtonText: nextLevel ? "Pilih Level Berikutnya" : undefined,
           customClass: {
-            popup: "small-popup",
-            confirmButton: "small-button",
-            cancelButton: "small-button",
+            popup: 'small-popup',
+            confirmButton: 'small-button',
+            cancelButton: 'small-button'
           },
-          background: "rgba(255,255,255,0.95)",
-          color: "#333",
+          background: 'rgba(255,255,255,0.95)',
+          color: '#333',
         }).then((res) => {
           if (res.dismiss === Swal.DismissReason.cancel && nextLevel) {
             navigate("/level");
@@ -130,18 +128,18 @@ function Gameplay() {
         title: "Oops!",
         text: "Preview hanya bisa dilakukan 3x.",
         icon: "warning",
-        customClass: { popup: "small-popup", confirmButton: "small-button" },
+        customClass: { popup: 'small-popup', confirmButton: 'small-button' },
       });
       return;
     }
 
-    setPreviewCount((prev) => prev + 1);
+    setPreviewCount(prev => prev + 1);
     MySwal.fire({
       title: `Preview (${previewCount + 1}/${MAX_PREVIEW})`,
       imageUrl: imageSrc,
       imageWidth: 300,
       imageAlt: "Preview Image",
-      customClass: { popup: "small-popup", confirmButton: "small-button" },
+      customClass: { popup: 'small-popup', confirmButton: 'small-button' },
     });
   };
 
@@ -152,12 +150,12 @@ function Gameplay() {
       confirmButtonText: "Kembali ke Beranda",
       cancelButtonText: "Lanjutkan",
       customClass: {
-        popup: "small-popup",
-        confirmButton: "small-button",
-        cancelButton: "small-button",
+        popup: 'small-popup',
+        confirmButton: 'small-button',
+        cancelButton: 'small-button'
       },
-      background: "rgba(255,255,255,0.95)",
-      color: "#333",
+      background: 'rgba(255,255,255,0.95)',
+      color: '#333',
     }).then((res) => {
       if (res.isConfirmed) {
         navigate("/start");
@@ -201,7 +199,7 @@ function Gameplay() {
         {pieces.map((pieceIndex, i) => (
           <div
             key={i}
-            className={`puzzle-piece ${selectedIndex === i ? "selected" : ""}`}
+            className={`puzzle-piece ${selectedIndex === i ? "selected-piece" : ""}`}
             onClick={() => handlePieceClick(i)}
             style={{
               width: PIECE_SIZE,
@@ -212,6 +210,8 @@ function Gameplay() {
               border: "1px solid #fff",
               boxSizing: "border-box",
               cursor: "pointer",
+              outline: selectedIndex === i ? "3px solid #ff25b686" : "none",
+              outlineOffset: "-3px",
             }}
           ></div>
         ))}
