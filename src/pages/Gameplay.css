@@ -92,7 +92,6 @@
   transition: outline 0.2s ease, transform 0.2s ease;
 }
 
-
 .puzzle-piece.selected {
   outline: 3px solid #ff7bcb;
   transform: scale(1.05);

@@ -163,8 +163,6 @@ function Gameplay() {
     });
   };
 
-  
-
   return (
     <div className="gameplay1" style={{ backgroundImage: `url('/assets/Gameplay.png')` }}>
       <img
@@ -197,6 +195,7 @@ function Gameplay() {
           gridTemplateRows: `repeat(${GRID_SIZE}, ${PIECE_SIZE}px)`,
           gap: "2px",
         }}
+
       >
         {pieces.map((pieceIndex, i) => (
           <div
