@@ -7,13 +7,13 @@ import withReactContent from "sweetalert2-react-content";
 import "./Gameplay.css";
 
 const GRID_SIZE = 5;
-const BOARD_SIZE = 420;
-const PIECE_SIZE = BOARD_SIZE / GRID_SIZE;
 const MAX_PREVIEW = 3;
 const MySwal = withReactContent(Swal);
 
 function Gameplay() {
   const { id } = useParams();
+  const [boardSize, setBoardSize] = useState(420); // default laptop
+  const PIECE_SIZE = boardSize / GRID_SIZE;
   const [imageSrc, setImageSrc] = useState("");
   const [pieces, setPieces] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -23,6 +23,20 @@ function Gameplay() {
   const [levelList, setLevelList] = useState([]);
   const timerRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const updateBoardSize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 500) {
+        setBoardSize(320); // responsif untuk HP
+      } else {
+        setBoardSize(420); // default untuk laptop
+      }
+    };
+    updateBoardSize();
+    window.addEventListener("resize", updateBoardSize);
+    return () => window.removeEventListener("resize", updateBoardSize);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -188,14 +202,13 @@ function Gameplay() {
       <div
         className="puzzle-board"
         style={{
-          width: BOARD_SIZE,
-          height: BOARD_SIZE,
+          width: boardSize,
+          height: boardSize,
           display: "grid",
           gridTemplateColumns: `repeat(${GRID_SIZE}, ${PIECE_SIZE}px)`,
           gridTemplateRows: `repeat(${GRID_SIZE}, ${PIECE_SIZE}px)`,
           gap: "2px",
         }}
-
       >
         {pieces.map((pieceIndex, i) => (
           <div
@@ -207,7 +220,7 @@ function Gameplay() {
               height: PIECE_SIZE,
               backgroundImage: `url(${imageSrc})`,
               backgroundPosition: `${-(pieceIndex % GRID_SIZE) * PIECE_SIZE}px ${-Math.floor(pieceIndex / GRID_SIZE) * PIECE_SIZE}px`,
-              backgroundSize: `${BOARD_SIZE}px ${BOARD_SIZE}px`,
+              backgroundSize: `${boardSize}px ${boardSize}px`,
               border: "1px solid #fff",
               boxSizing: "border-box",
               cursor: "pointer",

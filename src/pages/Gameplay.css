@@ -98,16 +98,15 @@
   z-index: 2;
 }
 
-/* ✅ Tambahan: Responsive Styling untuk HP */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .timer {
-    font-size: 18px;
-    padding: 8px 16px;
+    font-size: 16px;
+    padding: 6px 12px;
     top: 20px;
   }
 
   .setting-button {
-    width: 50px;
+    width: 40px;
     top: 20px;
     left: 10px;
   }
@@ -119,41 +118,28 @@
   }
 
   .preview-button {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .preview-count {
     font-size: 12px;
-    padding: 3px 8px;
+    padding: 3px 6px;
   }
 
   .correct-count {
-    font-size: 14px;
-    padding: 4px 10px;
-  }
-
-  
-
-  .puzzle-container {
-    margin-top: 80px;
-    transform: scale(0.85);
+    font-size: 13px;
+    padding: 4px 8px;
   }
 
   .swal2-popup.small-popup {
     width: 90% !important;
-    padding: 16px;
+    padding: 14px;
   }
 
   .swal2-confirm.small-button,
   .swal2-cancel.small-button {
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
     padding: 5px 10px !important;
   }
-}
-
-.puzzle-piece.selected {
-  outline: 3px solid #ff7bcb;
-  transform: scale(1.05);
-  z-index: 2;
 }
