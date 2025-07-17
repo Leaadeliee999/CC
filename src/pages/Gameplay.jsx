@@ -163,7 +163,7 @@ function Gameplay() {
     });
   };
 
-  console.log("Cek push ulang berhasil");
+  
 
   return (
     <div className="gameplay1" style={{ backgroundImage: `url('/assets/Gameplay.png')` }}>
