@@ -20,21 +20,27 @@ const OrientationWarning = () => {
   if (!isPortrait) return null;
 
   return (
-    <div style={{
-      position: "fixed",
-      top: 0, left: 0,
-      width: "100%",
-      height: "100%",
-      backgroundColor: "black",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 9999
-    }}>
-      <img
-        src="/assets/rotate-phone.gif"
-        alt="Rotate phone"
-        style={{ width: "150px" }}
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "black",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 9999,
+      }}
+    >
+      <video
+        src="/assets/Rotate-Phone.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{ width: "60%", maxWidth: "300px", borderRadius: "16px" }}
       />
     </div>
   );

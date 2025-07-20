@@ -13,7 +13,7 @@ function LandingPage() {
   return (
     <>
       {/* Warning jika HP belum landscape */}
-      <OrientationWarning />
+      <OrientationWarning/>
 
       <div className="landing-page">
         {/* Tombol Play */}
